@@ -1,16 +1,24 @@
-# Better YouTube Theater Player
-
-The YouTube theater player view is annoying because it will show the title, likes, and related videos. These are all distracting to actually watching the video. One could use fullscreen mode, but that takes away the view of the rest of your web browser and tabs and whatnot. 
-
-The Better YouTube Theater Player creates a space between the bottom of the video and the rest of the page content, so that all the distracting content is hidden BTF.
-
-
-
 Container of the video player
 <div id="full-bleed-container" class="style-scope ytd-watch-flexy">
 
 Container of the next stuff that goes underneath
 <div id="columns" class="style-scope ytd-watch-flexy">
 
+---
 
+style="border: 5px solid red;"
 
+<div id="full-bleed-container" class="style-scope ytd-watch-flexy">
+    player container
+
+player controls class="ytp-chrome-controls"
+
+might be able to solve this by changing the maxheight of the player controller to 100% - the size of the player controls
+currently it's set to 100vh - 169px ?
+ calc(100vh - 48px)
+
+id = full-bleed-container
+
+const id = "full-bleed-container"
+const elem = document.getElementById(id)
+elem.style.maxHeight = "calc(100vh - 50px)"
