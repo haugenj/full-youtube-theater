@@ -1,9 +1,15 @@
-const maxHeight = "calc(100vh - 58px)"
-const divId = "full-bleed-container"
+// Masthead height is 56px
+const mastHeadHeight = 56
+const maxHeightPaused = "calc(100vh - 56px)"
+const maxHeightPlaying = "100vh"
+const playerContainerId = "full-bleed-container"
+const playerId = "movie_player"
+const mastId = "masthead"
+const managerId = "page-manager"
 
-function setMaxHeight(id) {
+function setMaxHeight(id, height) {
     const elem = document.getElementById(id)
-    elem.style.maxHeight = maxHeight
+    elem.style.maxHeight = height
 }
 
 function removeMaxHeight(id) {
@@ -11,21 +17,49 @@ function removeMaxHeight(id) {
     elem.style.maxHeight = null
 }
 
+function playerObserverCB(mutationList, observer) {
+    if (document.getElementById(playerId).classList.contains('playing-mode')) {
+        console.log("jason playing")
+        hideMastHead()
+        setMaxHeight(playerContainerId, maxHeightPlaying);
+    } else {
+        console.log("jason paused")
+        showMastHead()
+        setMaxHeight(playerContainerId, maxHeightPaused)
+    }
+}
+
 function observerCallback(mutationList, observer) {
-    if (document.getElementById(divId)) {
+    // wait for player to load first
+    if (document.getElementById(playerContainerId)) {
+        const playerObserver = new MutationObserver(playerObserverCB)
+        playerObserver.observe(document.getElementById(playerId), { childList: true, subtree: true })
+
         observer.disconnect();
-        setMaxHeight(divId);
     }
 }
 
 const observer = new MutationObserver(observerCallback)
-observer.observe(document.body, {childList: true, subtree: true})
+observer.observe(document.body, { childList: true, subtree: true })
 
 // watch for fullscreen mode and then drop the maxHeight requirement - not supported on Safari
-document.addEventListener("fullscreenchange", () => { 
+document.addEventListener("fullscreenchange", () => {
     if (document.fullscreenElement) {
-        removeMaxHeight(divId)
+        removeMaxHeight(playerContainerId)
     } else {
-        setMaxHeight(divId)
+        setMaxHeight(playerContainerId)
     }
 })
+
+function hideMastHead() {
+    console.log('jason hiding')
+    document.getElementById('masthead').style.display = "none"
+    document.getElementById('page-manager').style.marginTop = "0"
+}
+
+function showMastHead() {
+    console.log('jason showing')
+    document.getElementById('page-manager').style.marginTop = "56px"
+    document.getElementById('masthead').style.display = "block"
+    console.log('jason done showing')
+}
