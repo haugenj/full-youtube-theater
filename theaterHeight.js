@@ -6,6 +6,7 @@ const playerContainerId = "full-bleed-container"
 const playerId = "movie_player"
 const mastId = "masthead"
 const managerId = "page-manager"
+let beenPlayed = false
 
 function setMaxHeight(id, height) {
     const elem = document.getElementById(id)
@@ -18,7 +19,10 @@ function removeMaxHeight(id) {
 }
 
 function playerObserverCB(mutationList, observer) {
-    if (document.getElementById(playerId).classList.contains('playing-mode')) {
+    classes = document.getElementById(playerId).classList
+    if (classes.contains('unstarted-mode')) {
+        return
+    } else if (classes.contains('playing-mode')) {
         console.log("jason playing")
         hideMastHead()
         setMaxHeight(playerContainerId, maxHeightPlaying);
