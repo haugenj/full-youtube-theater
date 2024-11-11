@@ -14,7 +14,8 @@
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],
-      "js": ["theaterHeight.js"]
+      "js": ["theaterHeight.js"],
+      "css": ["theater.css"]
     }
   ]
 
