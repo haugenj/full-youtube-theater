@@ -127,3 +127,21 @@ function showMastHead() {
     document.getElementById(managerId).style.marginTop = "56px"
     document.getElementById(mastheadId).style.display = "block"
 }
+
+/*
+id="masthead-container"
+position: fixed // remove this and it won't stay
+
+
+Hiding the player controls:
+id="movie-player"
+// when playing & hidden
+class="html5-video-player ytp-transparent ytp-exp-bottom-control-flexbox ytp-modern-caption ytp-exp-ppp-update ytp-cairo-refresh ytp-cairo-refresh-signature-moments ytp-fit-cover-video ytp-bigboards ytp-fine-scrubbing-exp ytp-hide-info-bar ytp-autonav-endscreen-cancelled-state ytp-heat-map-v2 ytp-heat-map ytp-large-width-mode playing-mode ytp-autohide"
+// when paused
+class="html5-video-player ytp-transparent ytp-exp-bottom-control-flexbox ytp-modern-caption ytp-exp-ppp-update ytp-cairo-refresh ytp-cairo-refresh-signature-moments ytp-fit-cover-video ytp-bigboards ytp-fine-scrubbing-exp ytp-hide-info-bar ytp-autonav-endscreen-cancelled-state ytp-heat-map-v2 ytp-heat-map ytp-large-width-mode paused-mode"
+// when playing but showing
+
+
+
+ytp-autohide-active
+*/
