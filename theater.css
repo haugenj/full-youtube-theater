@@ -4,7 +4,7 @@
 ytd-watch-flexy[theater] #player-full-bleed-container.ytd-watch-flexy,
 ytd-watch-grid[theater] #player-full-bleed-container.ytd-watch-grid {
   height: 100vh !important;
-  max-height: calc(100vh - 56px);
+  max-height: 100vh;
 }
 
 ytd-watch-flexy[fullscreen] #player-full-bleed-container.ytd-watch-flexy,
@@ -17,4 +17,18 @@ ytd-watch-flexy[full-bleed-player] #full-bleed-container.ytd-watch-flexy,
 ytd-watch-grid[full-bleed-player] #full-bleed-container.ytd-watch-grid {
   block-size: fit-content !important;
   max-height: fit-content !important;
+}
+
+ytd-page-manager[theater] {
+  margin-top: 0 !important;
+}
+
+ytd-masthead[theater]:hover {
+  opacity: 1;
+  transition: opacity .2s;
+}
+
+ytd-masthead[theater] {
+  opacity: 0;
+  transition: opacity .2s;
 }
