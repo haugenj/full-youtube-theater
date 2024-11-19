@@ -1,6 +1,4 @@
-/* copied from https://github.com/SimenMH/better-youtube-theatre-mode
-  `!` adjusted on line 5 to allow for masthead hiding 
-*/
+/* credit to https://github.com/SimenMH/better-youtube-theatre-mode */
 ytd-watch-flexy[theater] #player-full-bleed-container.ytd-watch-flexy,
 ytd-watch-grid[theater] #player-full-bleed-container.ytd-watch-grid {
   height: 100vh !important;

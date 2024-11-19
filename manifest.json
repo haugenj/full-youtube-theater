@@ -1,12 +1,12 @@
 {
 
-  "description": "Changes the maxheight of the YouTube theater player to hide video title and recommended videos.",
+  "description": "Hide everything but the video when in YouTube's theater mode.",
   "manifest_version": 2,
-  "name": "Better YouTube Theater",
+  "name": "Full YouTube Theater",
   "version": "1.0",
-  "homepage_url": "https://github.com/haugenj/",
+  "homepage_url": "https://github.com/haugenj/FullYTTheater",
   "icons": {
-    "48": "icons/icon48.png"
+    "480": "icons/icon.png"
   },
   "permissions": [
     "*://*.youtube.com/*"
@@ -14,7 +14,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/*"],
-      "js": ["theaterHeight.js"],
+      "js": ["theater.js"],
       "css": ["theater.css"]
     }
   ]
