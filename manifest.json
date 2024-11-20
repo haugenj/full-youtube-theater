@@ -4,7 +4,7 @@
   "manifest_version": 2,
   "name": "Full YouTube Theater",
   "version": "1.0",
-  "homepage_url": "https://github.com/haugenj/FullYTTheater",
+  "homepage_url": "https://github.com/haugenj/full-youtube-theater",
   "icons": {
     "480": "icons/icon.png"
   },
