@@ -3,44 +3,48 @@ const mastheadId = "masthead"
 const managerId = "page-manager"
 
 let theater = false
-let mini = false
+let isWatchPage = false
 
 // ======
-// main
+// main is-watch-page
 // ======
-const observer = new MutationObserver(observerCallback)
+const observer = new MutationObserver(setCallbacks)
 observer.observe(document.body, { childList: true, subtree: true })
 
 // ===========
 // callbacks
 // ===========
-function observerCallback(_mutationList, observer) {
+function setCallbacks(_mutationList, observer) {
     // wait for player to load before adding observers
     if (document.getElementById(playerContainerId)) {
         const ytdWatchFlexy = document.getElementsByTagName("ytd-watch-flexy")[0]
-        const theaterObserver = new MutationObserver(theaterCallback)
+        const theaterObserver = new MutationObserver(theaterCB)
         theaterObserver.observe(ytdWatchFlexy, { attributes: true })
 
-        const ytdApp = document.getElementsByTagName("ytd-app")[0]
-        const miniObserver = new MutationObserver(miniCallback)
-        miniObserver.observe(ytdApp, { attributes: true })
+        const ytdMasthead = document.getElementsByTagName("ytd-masthead")[0]
+        const watchPageObserver = new MutationObserver(isWatchPageCB)
+        watchPageObserver.observe(ytdMasthead, { attributes: true })
 
         observer.disconnect();
     }
 }
 
-function theaterCallback(mutationList) {
+function theaterCB(mutationList) {
     theater = mutationList[0].target.attributes.getNamedItem("theater") !== null
     update()
 }
 
-function miniCallback(mutationList) {
-    mini = mutationList[0].target.attributes.getNamedItem("miniplayer-is-active") !== null
-    update()
+function isWatchPageCB(mutationList) {
+    // prevents page load failure
+    let tmp = mutationList[0].target.attributes.getNamedItem("is-watch-page") !== null
+    if (isWatchPage != tmp) {
+        isWatchPage = tmp
+        update()
+    }
 }
 
 function update() {
-    if (theater && !mini) {
+    if (theater && isWatchPage) {
         document.getElementById(mastheadId).setAttribute("theater", "")
         document.getElementById(managerId).setAttribute("theater", "")
     } else {
