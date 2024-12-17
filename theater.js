@@ -30,13 +30,16 @@ function setCallbacks(_mutationList, observer) {
 }
 
 function theaterCB(mutationList) {
-    theater = mutationList[0].target.attributes.getNamedItem("theater") !== null
-    update()
+    const tmp = mutationList[0].target.attributes.getNamedItem("theater") !== null
+    if (theater != tmp) {
+        theater = tmp
+        update()
+    }
 }
 
 function isWatchPageCB(mutationList) {
     // prevents page load failure
-    let tmp = mutationList[0].target.attributes.getNamedItem("is-watch-page") !== null
+    const tmp = mutationList[0].target.attributes.getNamedItem("is-watch-page") !== null
     if (isWatchPage != tmp) {
         isWatchPage = tmp
         update()
